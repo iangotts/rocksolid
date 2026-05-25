@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Solid — Bay Area Female-Fronted Rock Band</title>
+<meta name="description" content="Rock Solid — the Bay Area's female-fronted rock cover band. Festivals, weddings, private events. Rehearsed, trusted, unforgettable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   ROCK SOLID — Editorial / Cormorant edition
+   ============================================ */
+
+:root {
+  --bg: #0a0a0a;
+  --bg-2: #111111;
+  --surface: #1a1a1a;
+  --cream: #f3ecdc;
+  --cream-dim: #c8c2b3;
+  --cream-faint: #8a8576;
+  --purple: #c084fc;
+  --purple-bright: #d8b4fe;
+  --purple-deep: #a855f7;
+  --purple-glow: rgba(192, 132, 252, 0.4);
+  --purple-faint: rgba(192, 132, 252, 0.12);
+  --border: rgba(243, 236, 220, 0.08);
+  --border-strong: rgba(243, 236, 220, 0.18);
+  --max: 920px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.55;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+::selection { background: var(--purple); color: #000; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.wrap-wide {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ============================================
+   TOP BAR  (hamburger left, CTA right)
+   ============================================ */
+.top-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  padding: 22px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+.top-bar > * { pointer-events: auto; }
+
+.menu-toggle {
+  width: 44px; height: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  width: 32px;
+  background: var(--purple);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+.menu-toggle:hover span { background: var(--purple-bright); }
+body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+body.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+  background: var(--purple);
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  letter-spacing: -0.005em;
+}
+.cta-pill:hover {
+  background: var(--purple-bright);
+  box-shadow: 0 8px 28px -8px var(--purple-glow);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   SLIDE-OUT MENU DRAWER
+   ============================================ */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 90;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.drawer {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: min(420px, 84vw);
+  background: var(--cream);
+  color: #000;
+  z-index: 95;
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+  padding: 100px 48px 40px;
+  display: flex;
+  flex-direction: column;
+}
+body.menu-open .drawer { transform: translateX(0); }
+body.menu-open .drawer-backdrop { opacity: 1; pointer-events: auto; }
+
+.drawer nav { display: flex; flex-direction: column; gap: 22px; }
+.drawer nav a {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #000;
+  transition: color 0.2s;
+  letter-spacing: -0.01em;
+}
+.drawer nav a:hover { color: var(--purple-deep); }
+
+.drawer-foot {
+  margin-top: auto;
+  padding-top: 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: #444;
+  line-height: 1.5;
+}
+.drawer-foot a {
+  color: var(--purple-deep);
+  font-weight: 600;
+}
+
+/* ============================================
+   HERO  — title + video + intro
+   ============================================ */
+.hero {
+  padding: 130px 0 80px;
+  text-align: center;
+  position: relative;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(48px, 9vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+  color: var(--cream);
+}
+.hero-title .conj {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.55em;
+  vertical-align: middle;
+  color: var(--cream-dim);
+  margin: 0 0.15em;
+  display: inline-block;
+  letter-spacing: 0;
+  transform: translateY(-0.15em);
+}
+.hero-title .accent {
+  color: var(--purple);
+  font-style: italic;
+  font-weight: 600;
+}
+.hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 56px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-subtitle::before,
+.hero-subtitle::after {
+  content: '';
+  width: 36px;
+  height: 1px;
+  background: var(--purple);
+  opacity: 0.7;
+}
+
+/* Hero video / featured media */
+.feature-video {
+  max-width: 760px;
+  margin: 0 auto 60px;
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.25), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(124, 58, 237, 0.18), transparent 60%),
+    linear-gradient(135deg, #1a0d2e 0%, #0a0a0a 60%, #2d1b3d 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  /* Replace this whole block with an <iframe src="https://youtube.com/embed/VIDEO_ID"></iframe> when ready */
+}
+.feature-video::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+}
+.feature-video .play-shape {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: rgba(192, 132, 252, 0.95);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 6px;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 50px var(--purple-glow);
+  z-index: 1;
+}
+.feature-video:hover .play-shape {
+  transform: scale(1.08);
+  background: var(--cream);
+}
+.feature-video .label {
+  position: absolute;
+  bottom: 22px; left: 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  z-index: 1;
+}
+
+.hero-intro {
+  max-width: 660px;
+  margin: 0 auto;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.3vw, 25px);
+  line-height: 1.5;
+  color: var(--cream);
+  font-weight: 400;
+}
+.hero-intro b {
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cream);
+}
+.hero-intro .underline {
+  background-image: linear-gradient(transparent 80%, var(--purple-faint) 80%);
+}
+
+/* ============================================
+   TAGLINE SECTION
+   ============================================ */
+.tagline-section {
+  padding: 90px 0 110px;
+  text-align: center;
+}
+.tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(38px, 6vw, 72px);
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  color: var(--purple);
+  max-width: 920px;
+  margin: 0 auto 64px;
+}
+
+/* Photo placeholder */
+.photo {
+  max-width: 1080px;
+  margin: 0 auto;
+  aspect-ratio: 16/10;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.55) 100%),
+    radial-gradient(ellipse at 50% 70%, rgba(192, 132, 252, 0.22) 0%, transparent 60%),
+    linear-gradient(135deg, #1a0d2e 0%, #0a0a0a 50%, #1f1432 100%);
+  border: 1px solid var(--border);
+}
+.photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+}
+.photo .photo-corner {
+  position: absolute;
+  top: 24px; right: 24px;
+  width: 26px; height: 26px;
+  border-top: 1.5px solid rgba(255,255,255,0.35);
+  border-right: 1.5px solid rgba(255,255,255,0.35);
+}
+.photo .photo-caption {
+  position: absolute;
+  bottom: 28px; left: 32px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+/* ============================================
+   ABOUT — long italic prose
+   ============================================ */
+.about {
+  padding: 110px 0;
+  text-align: center;
+}
+.about-band-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(34px, 5vw, 52px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  color: var(--cream);
+  line-height: 1.1;
+}
+.about-band-name .accent { color: var(--purple); font-style: italic; }
+.about-prose {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.about-prose p {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(19px, 2.2vw, 23px);
+  line-height: 1.55;
+  margin-bottom: 26px;
+  color: var(--cream);
+}
+.about-prose p b {
+  font-weight: 700;
+  color: var(--cream);
+}
+.about-prose .accent { color: var(--purple); font-weight: 500; }
+
+/* ============================================
+   SETLIST  — grouped by decade
+   ============================================ */
+.setlist {
+  padding: 110px 0;
+  position: relative;
+}
+.section-head {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.section-head h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(40px, 6vw, 72px);
+  color: var(--purple);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+.section-head .sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--cream-dim);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-color: var(--border-strong);
+  display: inline-block;
+}
+
+.setlist-controls {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cream-dim);
+  border: 1px solid var(--border-strong);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pill:hover { color: var(--cream); border-color: var(--purple); }
+.pill.on {
+  background: var(--purple);
+  color: #000;
+  border-color: var(--purple);
+}
+
+.decade-block {
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+.decade-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--purple);
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+.song-line {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 8px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--cream);
+}
+.song-line .play {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #000;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.song-line .play:hover {
+  background: var(--purple-bright);
+  transform: scale(1.1);
+  box-shadow: 0 0 14px var(--purple-glow);
+}
+.song-line .play.playing {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 var(--purple-glow); }
+  50% { box-shadow: 0 0 18px 4px var(--purple-glow); }
+}
+.song-line .play-spacer { width: 30px; flex-shrink: 0; }
+.song-line .title {
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cream);
+}
+.song-line .meta {
+  color: var(--cream-dim);
+  font-style: italic;
+  font-weight: 400;
+}
+.empty-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  text-align: center;
+  color: var(--cream-faint);
+  font-size: 22px;
+  padding: 60px 0;
+}
+
+/* ============================================
+   VIDEOS
+   ============================================ */
+.videos {
+  padding: 100px 0 120px;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+.video-card {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  /* Replace this block with an <iframe> when ready */
+}
+.video-card:nth-child(1) { background: linear-gradient(135deg, #2a0d3d 0%, #0a0a0a 70%); }
+.video-card:nth-child(2) { background: linear-gradient(135deg, #1a0d2e 0%, #4c1d95 100%); }
+.video-card:nth-child(3) { background: linear-gradient(135deg, #1e3a8a 0%, #6d28d9 100%); }
+.video-card:nth-child(4) { background: linear-gradient(135deg, #581c87 0%, #0a0a0a 100%); }
+.video-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+}
+.video-card .v-overlay {
+  position: absolute;
+  top: 24px; left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1;
+}
+.video-card .v-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: #000;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.video-card .v-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--cream);
+  font-weight: 500;
+}
+.video-card .v-meta b {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+.video-card .v-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: all 0.25s ease;
+}
+.video-card .v-play span {
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 40px var(--purple-glow);
+}
+.video-card:hover .v-play span { transform: scale(1.1); background: var(--purple-bright); }
+
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact {
+  padding: 110px 0 120px;
+  text-align: center;
+}
+.contact-intro {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(20px, 2.2vw, 24px);
+  color: var(--cream);
+  max-width: 580px;
+  margin: 0 auto 40px;
+  line-height: 1.5;
+}
+.contact-email {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: clamp(28px, 4vw, 42px);
+  color: var(--purple);
+  border-bottom: 1px solid var(--purple);
+  padding-bottom: 4px;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.contact-email:hover { color: var(--purple-bright); border-color: var(--purple-bright); }
+
+.contact-form {
+  max-width: 560px;
+  margin: 70px auto 0;
+  text-align: left;
+}
+.field { margin-bottom: 20px; }
+.field label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  margin-bottom: 8px;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border-strong);
+  color: var(--cream);
+  padding: 10px 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  font-style: italic;
+  outline: none;
+  transition: border-color 0.2s;
+  color-scheme: dark;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus { border-bottom-color: var(--purple); }
+.field input::placeholder,
+.field textarea::placeholder { color: var(--cream-faint); }
+.field select option { background: #fff; color: #000; }
+.field textarea { resize: vertical; min-height: 70px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.contact-form .cta-pill {
+  width: 100%;
+  justify-content: center;
+  margin-top: 14px;
+  padding: 15px;
+  font-size: 15px;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background: #050505;
+  border-top: 1px solid var(--border);
+  padding: 50px 0 28px;
+  text-align: center;
+}
+footer .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+footer .logo em { color: var(--purple); font-style: italic; }
+footer .tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--cream-dim);
+  margin-bottom: 24px;
+}
+.socials {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.socials a {
+  width: 38px; height: 38px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream-dim);
+  transition: all 0.2s;
+}
+.socials a:hover {
+  background: var(--purple);
+  color: #000;
+  border-color: var(--purple);
+  transform: translateY(-2px);
+}
+.copyright {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 700px) {
+  .wrap, .wrap-wide { padding: 0 22px; }
+  .top-bar { padding: 16px 18px; }
+  .cta-pill { padding: 10px 18px; font-size: 13px; }
+  .hero { padding: 100px 0 60px; }
+  .feature-video .play-shape { width: 64px; height: 64px; }
+  .feature-video .play-shape svg { width: 24px; height: 24px; }
+  .tagline-section { padding: 60px 0 80px; }
+  .about, .setlist, .videos, .contact { padding: 80px 0; }
+  .video-card .v-play span { width: 60px; height: 60px; }
+  .form-row { grid-template-columns: 1fr; }
+  .drawer { padding: 90px 32px 30px; }
+  .drawer nav a { font-size: 22px; }
+  .song-line { font-size: 19px; gap: 14px; }
+  .song-line .play, .song-line .play-spacer { width: 26px; height: 26px; }
+  .photo .photo-caption { bottom: 18px; left: 22px; font-size: 10px; }
+}
+</style>
+</head>
+<body>
+
+<!-- =================== TOP BAR =================== -->
+<div class="top-bar">
+  <button class="menu-toggle" id="menuBtn" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="#contact" class="cta-pill">Book the band</a>
+</div>
+
+<!-- =================== DRAWER =================== -->
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="drawer">
+  <nav>
+    <a href="#about" data-close>About</a>
+    <a href="#setlist" data-close>Songlist</a>
+    <a href="#videos" data-close>Videos</a>
+    <a href="#contact" data-close>Contact</a>
+    <a href="#contact" data-close>Book the band</a>
+  </nav>
+  <div class="drawer-foot">
+    Bay Area · Female-fronted rock.<br>
+    <a href="mailto:book@rocksolid.band">book@rocksolid.band</a>
+  </div>
+</aside>
+
+<!-- =================== HERO =================== -->
+<header class="hero" id="top">
+  <div class="wrap-wide">
+    <h1 class="hero-title">
+      Rock <span class="conj">and</span> <span class="accent">Solid</span>
+    </h1>
+    <div class="hero-subtitle">Bay Area · Female-Fronted Rock</div>
+
+    <div class="feature-video" data-video-id="">
+      <div class="play-shape">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg>
+      </div>
+      <div class="label">Promo Video · Live at the Fillmore</div>
+    </div>
+
+    <p class="hero-intro">
+      <b>Rock Solid</b> is the Bay Area's <span class="underline">female-fronted rock band</span>,
+      playing the songs of the women who built rock &amp; roll —
+      Joan Jett, Heart, Pink, Paramore, Patti Smith, Blondie — alongside the canon of
+      anthems everybody knows the words to. Every song chosen to make a room move.
+      Every song delivered tight, loud, and on time.
+    </p>
+  </div>
+</header>
+
+<!-- =================== TAGLINE + PHOTO =================== -->
+<section class="tagline-section">
+  <div class="wrap-wide">
+    <h2 class="tagline">"We're loud when you need loud — and tight every single time."</h2>
+    <div class="photo">
+      <div class="photo-corner"></div>
+      <div class="photo-caption">Live · House of Blues · 2025</div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== ABOUT =================== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <h2 class="about-band-name">Rock <span class="accent">Solid</span></h2>
+    <div class="about-prose">
+      <p>
+        We pull from five decades of powerhouse women — <b>Joan Jett, Patti Smith, Heart,
+        Blondie, the Pretenders, Pink, Paramore, Avril Lavigne</b> — alongside the rock
+        anthems everybody knows the words to.
+      </p>
+      <p>
+        Our front line punches above its weight, our rhythm section locks like a vault,
+        and we don't phone in a single song. Whether you're booking a <b>5,000-person festival</b>
+        or a <b>75-person backyard wedding</b>, you're getting the same band: rehearsed
+        until it's effortless, organized to the minute, easy to work with.
+      </p>
+      <p>
+        You'll love the energy, the performance, and the delivery. And, oh, that <span class="accent">songlist</span>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SETLIST =================== -->
+<section class="setlist" id="setlist">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Our songlist</h2>
+      <a href="#contact" class="sub">Click to request a personalised setlist for your event</a>
+    </div>
+
+    <div class="setlist-controls">
+      <button class="pill on" data-filter="all">All</button>
+      <button class="pill" data-filter="2020s">2020s</button>
+      <button class="pill" data-filter="2010s">2010s</button>
+      <button class="pill" data-filter="2000s">2000s</button>
+      <button class="pill" data-filter="1990s">1990s</button>
+      <button class="pill" data-filter="1980s">1980s</button>
+      <button class="pill" data-filter="1970s">1970s</button>
+      <button class="pill" data-filter="1960s">1960s</button>
+    </div>
+
+    <div id="songs"></div>
+  </div>
+</section>
+
+<!-- =================== VIDEOS =================== -->
+<section class="videos" id="videos">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Watch us play</h2>
+    </div>
+    <div class="video-list">
+      <article class="video-card" data-video-title="Promo Video">
+        <div class="v-overlay">
+          <div class="v-avatar">R</div>
+          <div class="v-meta"><b>PROMO VIDEO</b>Rock Solid · Live</div>
+        </div>
+        <div class="v-play"><span>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg>
+        </span></div>
+      </article>
+      <article class="video-card" data-video-title="Seven Nation Army × Sweet Dreams">
+        <div class="v-overlay">
+          <div class="v-avatar">R</div>
+          <div class="v-meta"><b>Seven Nation Army × Sweet Dreams</b>Mashup · Studio</div>
+        </div>
+        <div class="v-play"><span>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg>
+        </span></div>
+      </article>
+      <article class="video-card" data-video-title="Smells Like Teen Spirit">
+        <div class="v-overlay">
+          <div class="v-avatar">R</div>
+          <div class="v-meta"><b>Smells Like Teen Spirit</b>Live at the Fillmore</div>
+        </div>
+        <div class="v-play"><span>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg>
+        </span></div>
+      </article>
+      <article class="video-card" data-video-title="Rebel Yell">
+        <div class="v-overlay">
+          <div class="v-avatar">R</div>
+          <div class="v-meta"><b>Rebel Yell</b>Wedding · Sonoma</div>
+        </div>
+        <div class="v-play"><span>
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg>
+        </span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =================== CONTACT =================== -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Let's do this</h2>
+    </div>
+    <p class="contact-intro">
+      Tell us about your event — festival, wedding, private, corporate. We'll respond
+      within 24 hours with availability, pricing, and a few questions to lock in the details.
+    </p>
+    <a href="mailto:book@rocksolid.band" class="contact-email">book@rocksolid.band</a>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="field">
+          <label for="fName">Name</label>
+          <input id="fName" type="text" required>
+        </div>
+        <div class="field">
+          <label for="fEmail">Email</label>
+          <input id="fEmail" type="email" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="fEvent">Event type</label>
+          <select id="fEvent" required>
+            <option value="">Choose one…</option>
+            <option>Wedding</option>
+            <option>Festival</option>
+            <option>Private party</option>
+            <option>Corporate</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fDate">Date</label>
+          <input id="fDate" type="date">
+        </div>
+      </div>
+      <div class="field">
+        <label for="fVenue">Venue / location</label>
+        <input id="fVenue" type="text" placeholder="City or venue name">
+      </div>
+      <div class="field">
+        <label for="fMsg">Anything else?</label>
+        <textarea id="fMsg" placeholder="Headcount, vibe, song requests…"></textarea>
+      </div>
+      <button type="submit" class="cta-pill">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  <div class="wrap">
+    <div class="logo">Rock <em>Solid</em></div>
+    <div class="tag">The Bay Area's female-fronted rock band.</div>
+    <div class="socials">
+      <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="#" aria-label="Spotify"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+    </div>
+    <div class="copyright">© Rock Solid · Bay Area</div>
+  </div>
+</footer>
+
+<script>
+/* ============================================
+   SONG DATA — [title, artist, year]
+   ============================================ */
+const SONGS = [
+  ["Because The Night","Patti Smith",1978],
+  ["Hit Me With Your Best Shot","Pat Benatar",1980],
+  ["We Belong","Pat Benatar",1984],
+  ["I Love Rock 'n' Roll","Joan Jett",1981],
+  ["Bad Reputation","Joan Jett",1980],
+  ["Ain't It Fun","Paramore",2013],
+  ["Alone","Heart",1987],
+  ["Barracuda","Heart",1977],
+  ["Before He Cheats","Carrie Underwood",2005],
+  ["Black Velvet","Alannah Myles",1989],
+  ["Call Me","Blondie",1980],
+  ["Chain Of Fools","Aretha Franklin",1968],
+  ["Cry Baby","Janis Joplin",1971],
+  ["Flowers","Miley Cyrus",2023],
+  ["Heartbreaker","Pat Benatar",1979],
+  ["Heart Of Glass","Blondie",1978],
+  ["I Believe In A Thing Called Love","The Darkness",2003],
+  ["Just A Girl","No Doubt",1995],
+  ["Mama's Broken Heart","Miranda Lambert",2011],
+  ["Man! I Feel Like A Woman","Shania Twain",1997],
+  ["Party in the USA","Miley Cyrus",2009],
+  ["Seven Nation Army × Sweet Dreams (mashup)","The White Stripes / Eurythmics",2003],
+  ["So What","Pink",2008],
+  ["Stupid Girl","Garbage",1995],
+  ["Sweet Child O' Mine","Guns N' Roses",1987],
+  ["Teenage Dirtbag","Wheatus",2000],
+  ["What's Up","4 Non Blondes",1992],
+  ["Whole Lotta Love","Led Zeppelin",1969],
+  ["You Oughta Know","Alanis Morissette",1995],
+  ["You Really Got Me","The Kinks",1964],
+  ["You Shook Me All Night Long","AC/DC",1980],
+  ["Zombie","The Cranberries",1994],
+  ["Addicted to Love","Robert Palmer",1985],
+  ["Born This Way","Lady Gaga",2011],
+  ["Crazy On You","Heart",1976],
+  ["Enter Sandman","Metallica",1991],
+  ["Here I Go Again","Whitesnake",1982],
+  ["Highway to Hell","AC/DC",1979],
+  ["Immigrant Song","Led Zeppelin",1970],
+  ["Jump","Van Halen",1984],
+  ["Livin' On A Prayer","Bon Jovi",1986],
+  ["Mr Brightside","The Killers",2004],
+  ["No One Like You","Scorpions",1981],
+  ["Nothin' But A Good Time","Poison",1988],
+  ["Paint It Black","The Rolling Stones",1966],
+  ["Paranoid","Black Sabbath",1970],
+  ["Personal Jesus × Big Spender (mashup)","Depeche Mode / Shirley Bassey",1990],
+  ["Pour Some Sugar On Me","Def Leppard",1987],
+  ["Rebel Yell","Billy Idol",1983],
+  ["Rock and Roll","Led Zeppelin",1971],
+  ["Rock the Casbah","The Clash",1982],
+  ["Rock You Like A Hurricane","Scorpions",1984],
+  ["Run To You","Bryan Adams",1984],
+  ["Should I Stay or Should I Go","The Clash",1982],
+  ["Smells Like Teen Spirit","Nirvana",1991],
+  ["Song 2","Blur",1997],
+  ["Stairway To Heaven","Led Zeppelin",1971],
+  ["Summer of '69","Bryan Adams",1984],
+  ["The Middle","Jimmy Eat World",2001],
+  ["Stacy's Mom","Fountains of Wayne",2003],
+  ["Walk This Way","Aerosmith",1975],
+  ["We Will Rock You × Back In Black","Queen / AC/DC",1977],
+  ["You Give Love A Bad Name","Bon Jovi",1986],
+  ["Edge of Seventeen","Stevie Nicks",1981],
+  ["Move Along","The All-American Rejects",2005],
+  ["Bring Me To Life","Evanescence",2003],
+  ["Sweet Home Alabama","Lynyrd Skynyrd",1974],
+  ["good 4 u","Olivia Rodrigo",2021],
+  ["Can't Fight This Feeling","REO Speedwagon",1984],
+  ["Dream On","Aerosmith",1973],
+  ["Tusk","Fleetwood Mac",1979],
+  ["She's Not There","The Zombies",1964],
+  ["Are You Gonna Go My Way","Lenny Kravitz",1993],
+  ["Free Fallin'","Tom Petty",1989],
+  ["Another Brick in the Wall","Pink Floyd",1979],
+  ["Footloose","Kenny Loggins",1984],
+  ["I'm The Only One","Melissa Etheridge",1993],
+  ["More Than a Feeling","Boston",1976],
+  ["Try (Just a Little Bit Harder)","Janis Joplin",1969],
+  ["Back on the Chain Gang","The Pretenders",1982],
+  ["Iris","Goo Goo Dolls",1998],
+  ["Wonderwall","Oasis",1995],
+  ["Supermassive Black Hole","Muse",2006],
+  ["The Best","Tina Turner",1989],
+  ["Layla","Derek and the Dominos",1970],
+  ["Dani California","Red Hot Chili Peppers",2006],
+  ["Piece of My Heart","Janis Joplin",1968],
+  ["Celebrity Skin","Hole",1998],
+  ["I Want to Know What Love Is","Foreigner",1984],
+  ["Do I Wanna Know?","Arctic Monkeys",2013],
+  ["(I Just) Died In Your Arms","Cutting Crew",1986],
+  ["Light My Fire","The Doors",1967],
+  ["Cocaine","Eric Clapton",1977],
+  ["Don't You (Forget About Me)","Simple Minds",1985],
+  ["Don't Stop Believin'","Journey",1981],
+  ["Fight For Your Right","Beastie Boys",1986],
+  ["Owner of a Lonely Heart","Yes",1983],
+  ["All Star","Smash Mouth",1999],
+  ["Feeling Good","Nina Simone",1965],
+  ["I Will Survive","Gloria Gaynor",1978],
+  ["Saturday Night's Alright (For Fighting)","Elton John",1973],
+  ["Radioactive","Imagine Dragons",2012],
+  ["Misery Business","Paramore",2007],
+  ["Money","Pink Floyd",1973],
+  ["Hard To Handle","The Black Crowes",1990],
+  ["Pinball Wizard","The Who",1969],
+  ["Every Breath You Take","The Police",1983],
+  ["You're So Vain","Carly Simon",1972],
+  ["Best Day Of My Life","American Authors",2013],
+  ["White Rabbit","Jefferson Airplane",1967],
+  ["Complicated","Avril Lavigne",2002],
+  ["In The Air Tonight","Phil Collins",1981],
+  ["If It Makes You Happy","Sheryl Crow",1996],
+  ["The Chain","Fleetwood Mac",1977],
+  ["Since U Been Gone","Kelly Clarkson",2004],
+  ["Life is a Highway","Tom Cochrane",1991],
+  ["Desire","U2",1988],
+  ["With A Little Help From My Friends","The Beatles",1967],
+  ["Brass in Pocket","The Pretenders",1979],
+  ["American Girl","Tom Petty",1976],
+  ["Stronger (What Doesn't Kill You)","Kelly Clarkson",2011],
+  ["Stupid Girls","Pink",2006],
+  ["Put the Gun Down","ZZ Ward",2012],
+  ["Come Together","The Beatles",1969],
+  ["One Way Or Another","Blondie",1978],
+  ["BLOW","Beyoncé",2022],
+  ["Pompeii","Bastille",2013],
+  ["White Wedding","Billy Idol",1982],
+  ["I Love It","Icona Pop",2012],
+  ["Born To Be Wild","Steppenwolf",1968],
+  ["Ruby","Kaiser Chiefs",2007],
+  ["Somebody to Love","Queen",1976],
+  ["Africa","Toto",1982],
+  ["Maria","Blondie",1999],
+  ["Sunglasses At Night","Corey Hart",1984],
+  ["Legs","ZZ Top",1983],
+  ["Black Horse And The Cherry Tree","KT Tunstall",2004],
+  ["The Boys Of Summer","Don Henley",1984],
+  ["Every Rose Has Its Thorn","Poison",1988],
+  ["You Took The Words Right Out of My Mouth","Meat Loaf",1977],
+  ["Dancing In the Dark","Bruce Springsteen",1984],
+  ["Wild Thing","The Troggs",1966],
+  ["Burning Down the House","Talking Heads",1983],
+  ["Brown Sugar","The Rolling Stones",1971],
+  ["Purple Rain","Prince",1984],
+  ["Girlfriend","Avril Lavigne",2007],
+  ["Sledgehammer","Peter Gabriel",1986],
+  ["Sunday Bloody Sunday","U2",1983],
+  ["Roxanne","The Police",1978],
+  ["Fox On The Run","The Sweet",1974],
+  ["Everybody Wants To Rule The World","Tears for Fears",1985],
+  ["Eye Of The Tiger","Survivor",1982],
+  ["Just What I Needed","The Cars",1978],
+  ["Sweet Caroline","Neil Diamond",1969],
+  ["All The Small Things","Blink-182",1999],
+  ["The Final Countdown","Europe",1986],
+  ["I Was Made For Lovin' You","KISS",1979]
+];
+
+const PLAYABLE = {
+  "Seven Nation Army × Sweet Dreams (mashup)": "",
+  "Man! I Feel Like A Woman": "",
+  "Smells Like Teen Spirit": "",
+  "Everybody Wants To Rule The World": "",
+  "Rebel Yell": "",
+  "Sweet Child O' Mine": "",
+  "You Give Love A Bad Name": "",
+  "I Was Made For Lovin' You": ""
+};
+
+const songsEl = document.getElementById('songs');
+let activeFilter = 'all';
+
+function decadeOf(year) { return `${Math.floor(year / 10) * 10}s`; }
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+function render() {
+  // Filter
+  const filtered = SONGS.filter(([n, a, y]) => activeFilter === 'all' || decadeOf(y) === activeFilter);
+
+  if (!filtered.length) {
+    songsEl.innerHTML = '<div class="empty-msg">No songs in that decade — but ask, we probably know it.</div>';
+    return;
+  }
+
+  // Group by decade, newest first
+  const groups = {};
+  filtered.forEach(s => {
+    const d = decadeOf(s[2]);
+    (groups[d] = groups[d] || []).push(s);
+  });
+  const decades = Object.keys(groups).sort((a, b) => b.localeCompare(a));
+
+  songsEl.innerHTML = decades.map(decade => {
+    // Sort songs alphabetically within decade
+    const list = groups[decade].sort((a, b) => a[0].localeCompare(b[0]));
+    const items = list.map(([name, artist, year]) => {
+      const isPlayable = Object.prototype.hasOwnProperty.call(PLAYABLE, name);
+      const lead = isPlayable
+        ? `<button class="play" aria-label="Listen" data-song="${escapeHtml(name)}"><svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor"><path d="M6 4l14 8-14 8V4z"/></svg></button>`
+        : `<span class="play-spacer"></span>`;
+      return `
+        <div class="song-line">
+          ${lead}
+          <span><span class="title">${escapeHtml(name)}</span><span class="meta"> — ${escapeHtml(artist)} — ${year}</span></span>
+        </div>
+      `;
+    }).join('');
+    return `
+      <div class="decade-block">
+        <h3 class="decade-heading">${decade}</h3>
+        ${items}
+      </div>
+    `;
+  }).join('');
+
+  // Wire play buttons
+  songsEl.querySelectorAll('.play').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      playSong(btn.dataset.song, btn);
+    });
+  });
+}
+
+let currentAudio = null;
+function playSong(name, btn) {
+  const url = PLAYABLE[name];
+  if (currentAudio) {
+    currentAudio.pause();
+    document.querySelectorAll('.play.playing').forEach(b => b.classList.remove('playing'));
+    if (currentAudio._btn === btn) { currentAudio = null; return; }
+    currentAudio = null;
+  }
+  if (url) {
+    const a = new Audio(url);
+    a._btn = btn;
+    a.play().catch(() => {});
+    a.addEventListener('ended', () => btn.classList.remove('playing'));
+    btn.classList.add('playing');
+    currentAudio = a;
+  } else {
+    window.location.href = 'mailto:book@rocksolid.band?subject=' +
+      encodeURIComponent('Demo request: ' + name) +
+      '&body=' + encodeURIComponent('Hi Rock Solid — could you send me a recording of "' + name + '"? Thanks!');
+  }
+}
+
+document.querySelectorAll('.pill').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.pill').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    activeFilter = b.dataset.filter;
+    render();
+  });
+});
+
+render();
+
+/* ============================================
+   DRAWER
+   ============================================ */
+const menuBtn = document.getElementById('menuBtn');
+const backdrop = document.getElementById('drawerBackdrop');
+function setMenu(open) {
+  document.body.classList.toggle('menu-open', open);
+  menuBtn.setAttribute('aria-expanded', open);
+}
+menuBtn.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+backdrop.addEventListener('click', () => setMenu(false));
+document.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+/* ============================================
+   VIDEO PLACEHOLDERS — open mailto for now,
+   replace with iframes when real URLs are ready
+   ============================================ */
+document.querySelectorAll('.video-card, .feature-video').forEach(card => {
+  card.addEventListener('click', () => {
+    const title = card.dataset.videoTitle || 'Promo Video';
+    window.location.href = 'mailto:book@rocksolid.band?subject=' +
+      encodeURIComponent('Video request: ' + title);
+  });
+});
+
+/* ============================================
+   FORM
+   ============================================ */
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button[type="submit"]');
+  const original = btn.textContent;
+  btn.textContent = '✓ Sent — we\'ll be in touch';
+  setTimeout(() => {
+    e.target.reset();
+    btn.textContent = original;
+  }, 3000);
+}
+</script>
+
+</body>
+</html>
